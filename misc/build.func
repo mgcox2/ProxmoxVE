@@ -770,9 +770,9 @@ build_container() {
   TEMP_DIR=$(mktemp -d)
   pushd $TEMP_DIR >/dev/null
   if [ "$var_os" == "alpine" ]; then
-    export FUNCTIONS_FILE_PATH="$(curl -s https://raw.githubusercontent.com/remz1337/ProxmoxVE/remz/misc/alpine-install.func)"
+    export FUNCTIONS_FILE_PATH="$(curl -s https://raw.githubusercontent.com/remz1337/ProxmoxVE/mgcox2/misc/alpine-install.func)"
   else
-    export FUNCTIONS_FILE_PATH="$(curl -s https://raw.githubusercontent.com/remz1337/ProxmoxVE/remz/misc/install.func)"
+    export FUNCTIONS_FILE_PATH="$(curl -s https://raw.githubusercontent.com/remz1337/ProxmoxVE/mgcox2/misc/install.func)"
   fi
   export CACHER="$APT_CACHER"
   export CACHER_IP="$APT_CACHER_IP"
@@ -804,7 +804,7 @@ build_container() {
   # Check for missing required environment variables
   phs_validate_required_config
   # This executes create_lxc.sh and creates the container and .conf file
-  bash -c "$(wget -qLO - https://raw.githubusercontent.com/remz1337/ProxmoxVE/remz/ct/create_lxc.sh)" || exit
+  bash -c "$(wget -qLO - https://raw.githubusercontent.com/remz1337/ProxmoxVE/mgcox2/ct/create_lxc.sh)" || exit
 
   LXC_CONFIG=/etc/pve/lxc/${CTID}.conf
   if [ "$CT_TYPE" == "0" ]; then
@@ -867,8 +867,8 @@ EOF'
     pct exec "$CTID" -- ash -c "apk add bash >/dev/null"
   fi
   # This executes post_create_lxc.sh for additional configurations (default user, shared mount directory, postfix satellite)
-  source <(curl -s https://raw.githubusercontent.com/remz1337/ProxmoxVE/remz/ct/post_create_lxc.sh)
-  lxc-attach -n "$CTID" -- bash -c "$(wget -qLO - https://raw.githubusercontent.com/remz1337/ProxmoxVE/remz/install/$var_install.sh)" || exit
+  source <(curl -s https://raw.githubusercontent.com/remz1337/ProxmoxVE/mgcox2/ct/post_create_lxc.sh)
+  lxc-attach -n "$CTID" -- bash -c "$(wget -qLO - https://raw.githubusercontent.com/remz1337/ProxmoxVE/mgcox2/install/$var_install.sh)" || exit
 
 }
 
@@ -880,7 +880,7 @@ description() {
   DESCRIPTION=$(cat <<EOF
 <div align='center'>
   <a href='https://Helper-Scripts.com' target='_blank' rel='noopener noreferrer'>
-    <img src='https://raw.githubusercontent.com/remz1337/ProxmoxVE/remz/misc/images/logo-81x112.png' alt='Logo' style='width:81px;height:112px;'/>
+    <img src='https://raw.githubusercontent.com/remz1337/ProxmoxVE/mgcox2/misc/images/logo-81x112.png' alt='Logo' style='width:81px;height:112px;'/>
   </a>
 
   <h2 style='font-size: 24px; margin: 20px 0;'>${APP} LXC</h2>
