@@ -140,6 +140,7 @@ pve_check() {
     msg_error "${CROSS}${RD}This version of Proxmox Virtual Environment is not supported"
     echo -e "Requires Proxmox Virtual Environment Version 8.1 or later."
     echo -e "Exiting..."
+    echo -e "mgcox2 repo"
     sleep 2
     exit
 fi
